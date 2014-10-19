@@ -1,0 +1,159 @@
+{
+  "updatedTime" : "2:38 PM",
+  "stores" : [ {
+    "storeNumber" : "R227",
+    "storeName" : "Bentall Centre",
+    "storeEnabled" : true
+  }, {
+    "storeNumber" : "R113",
+    "storeName" : "Bluewater",
+    "storeEnabled" : true
+  }, {
+    "storeNumber" : "R340",
+    "storeName" : "Braehead",
+    "storeEnabled" : true
+  }, {
+    "storeNumber" : "R163",
+    "storeName" : "Brent Cross",
+    "storeEnabled" : true
+  }, {
+    "storeNumber" : "R496",
+    "storeName" : "Bromley",
+    "storeEnabled" : true
+  }, {
+    "storeNumber" : "R135",
+    "storeName" : "Buchanan Street",
+    "storeEnabled" : true
+  }, {
+    "storeNumber" : "R118",
+    "storeName" : "Bullring",
+    "storeEnabled" : true
+  }, {
+    "storeNumber" : "R252",
+    "storeName" : "Cabot Circus",
+    "storeEnabled" : true
+  }, {
+    "storeNumber" : "R391",
+    "storeName" : "Chapelfield",
+    "storeEnabled" : true
+  }, {
+    "storeNumber" : "R244",
+    "storeName" : "Churchill Square",
+    "storeEnabled" : true
+  }, {
+    "storeNumber" : "R245",
+    "storeName" : "Covent Garden",
+    "storeEnabled" : true
+  }, {
+    "storeNumber" : "R393",
+    "storeName" : "Cribbs Causeway",
+    "storeEnabled" : true
+  }, {
+    "storeNumber" : "R545",
+    "storeName" : "Drake Circus",
+    "storeEnabled" : true
+  }, {
+    "storeNumber" : "R341",
+    "storeName" : "Eldon Square",
+    "storeEnabled" : true
+  }, {
+    "storeNumber" : "R482",
+    "storeName" : "Festival Place",
+    "storeEnabled" : true
+  }, {
+    "storeNumber" : "R270",
+    "storeName" : "Grand Arcade",
+    "storeEnabled" : true
+  }, {
+    "storeNumber" : "R308",
+    "storeName" : "Highcross",
+    "storeEnabled" : true
+  }, {
+    "storeNumber" : "R242",
+    "storeName" : "Lakeside",
+    "storeEnabled" : true
+  }, {
+    "storeNumber" : "R239",
+    "storeName" : "Liverpool ONE",
+    "storeEnabled" : true
+  }, {
+    "storeNumber" : "R215",
+    "storeName" : "Manchester Arndale",
+    "storeEnabled" : true
+  }, {
+    "storeNumber" : "R153",
+    "storeName" : "Meadowhall",
+    "storeEnabled" : true
+  }, {
+    "storeNumber" : "R423",
+    "storeName" : "Metrocentre",
+    "storeEnabled" : true
+  }, {
+    "storeNumber" : "R269",
+    "storeName" : "Milton Keynes",
+    "storeEnabled" : true
+  }, {
+    "storeNumber" : "R328",
+    "storeName" : "Princes Street",
+    "storeEnabled" : false
+  }, {
+    "storeNumber" : "R279",
+    "storeName" : "Princesshay",
+    "storeEnabled" : true
+  }, {
+    "storeNumber" : "R092",
+    "storeName" : "Regent Street",
+    "storeEnabled" : true
+  }, {
+    "storeNumber" : "R335",
+    "storeName" : "SouthGate",
+    "storeEnabled" : true
+  }, {
+    "storeNumber" : "R334",
+    "storeName" : "St David's 2",
+    "storeEnabled" : true
+  }, {
+    "storeNumber" : "R410",
+    "storeName" : "Stratford City",
+    "storeEnabled" : true
+  }, {
+    "storeNumber" : "R176",
+    "storeName" : "The Oracle",
+    "storeEnabled" : true
+  }, {
+    "storeNumber" : "R255",
+    "storeName" : "Touchwood Centre",
+    "storeEnabled" : true
+  }, {
+    "storeNumber" : "R136",
+    "storeName" : "Trafford Centre",
+    "storeEnabled" : true
+  }, {
+    "storeNumber" : "R372",
+    "storeName" : "Trinity Leeds",
+    "storeEnabled" : true
+  }, {
+    "storeNumber" : "R363",
+    "storeName" : "Union Square",
+    "storeEnabled" : true
+  }, {
+    "storeNumber" : "R313",
+    "storeName" : "Victoria Square",
+    "storeEnabled" : true
+  }, {
+    "storeNumber" : "R527",
+    "storeName" : "Watford",
+    "storeEnabled" : true
+  }, {
+    "storeNumber" : "R174",
+    "storeName" : "WestQuay",
+    "storeEnabled" : true
+  }, {
+    "storeNumber" : "R226",
+    "storeName" : "White City",
+    "storeEnabled" : true
+  } ],
+  "timezone" : "BST",
+  "updatedDate" : "Sunday, 12 October",
+  "reservationURL" : "https://reserve-gb.apple.com/GB/en_GB/reserve/iPhone"
+}
