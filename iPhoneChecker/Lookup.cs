@@ -58,17 +58,11 @@ namespace iPhoneChecker
         /// <returns>List of stores where iPhone is currently available</returns>
         public List<string> PhoneAvailable(ModelCode ModelCode) {
 
-            //These are the web addresses.  Should really be parsing them in but hard coded for now
-            //var storesURL = "https://reserve.cdn-apple.com/GB/en_GB/reserve/iPhone/stores.json";
-            var storesURL = _storesLookupURL ? _storesLookupURL.AbsolutePath: "";
-            //var availabilityURL = "https://reserve.cdn-apple.com/GB/en_GB/reserve/iPhone/availability.json";
-            var availabilityURL = _availabilityLookupURL.AbsolutePath;
-
             WebClient wc = new WebClient();
 
             //If I've passing the json string in use that otherwise use the URL
             if (string.IsNullOrEmpty(_storesString)){
-                _storesString =wc.DownloadString(storesURL);
+                _storesString = wc.DownloadString(_storesLookupURL);
             }
             Stores stores = JsonConvert.DeserializeObject<Stores>(_storesString);
             var storeDictionary = stores.stores.ToDictionary(m => m.storeNumber);
@@ -76,7 +70,7 @@ namespace iPhoneChecker
 
             //If I've passing the json string in use that otherwise use the URL
             if (string.IsNullOrEmpty(_availabilityString))
-                _availabilityString = wc.DownloadString(availabilityURL);
+                _availabilityString = wc.DownloadString(_availabilityLookupURL);
 
       
             var json = JsonConvert.DeserializeObject<dynamic>(_availabilityString);
