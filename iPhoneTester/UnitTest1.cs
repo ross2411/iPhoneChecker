@@ -33,7 +33,7 @@ namespace iPhoneTester
         public void AnyGreyIphones64GB()
         {
             Lookup lookup = new Lookup();
-            var stores = lookup.PhoneAvailable(true, "64sg");
+            var stores = lookup.PhoneAvailable(ModelCode.iPhone6Grey64GB);
             Assert.IsTrue(stores.Count > 0);
         
         }
@@ -41,7 +41,7 @@ namespace iPhoneTester
         public void AnyGreyIphones64GBInStockOracle()
         {
             Lookup lk = new Lookup();
-            var stores = lk.PhoneAvailable(true, "64sg");
+            var stores = lk.PhoneAvailable(ModelCode.iPhone6Grey64GB);
             Assert.IsTrue( stores.Where(m=>m.ToLower().Contains("oracle")).Count() > 0);
         }
 
@@ -49,7 +49,7 @@ namespace iPhoneTester
         public void AnyGreyIphones64GBInStockFestivalPlace()
         {
             Lookup lk = new Lookup();
-            var stores = lk.PhoneAvailable(true, "64sg");
+            var stores = lk.PhoneAvailable(ModelCode.iPhone6Grey64GB);
             Assert.IsTrue(stores.Where(m => m.ToLower().Contains("festival")).Count() > 0);
         }
 
@@ -58,7 +58,7 @@ namespace iPhoneTester
         {
             Lookup lookup = new Lookup(this.AvailabilityText,this.StoresText);
 
-            var stores = lookup.PhoneAvailable(false, "64sg");
+            var stores = lookup.PhoneAvailable(ModelCode.iPhone6Grey64GB);
             Assert.IsTrue(stores.Count > 0);
 
         }
@@ -68,7 +68,7 @@ namespace iPhoneTester
         public void AnyGreyIphones16GB()
         {
             Lookup lookup = new Lookup();
-            var stores = lookup.PhoneAvailable(true, "16sg");
+            var stores = lookup.PhoneAvailable(ModelCode.iPhone6Grey16GB);
             Assert.IsTrue(stores.Count > 0);
 
         }
@@ -77,7 +77,7 @@ namespace iPhoneTester
         public void AnyGreyIphones128GB()
         {
             Lookup lookup = new Lookup();
-            var stores = lookup.PhoneAvailable(true, "128sg");
+            var stores = lookup.PhoneAvailable( ModelCode.iPhone6Grey128GB);
             Assert.IsTrue(stores.Count > 0);
 
         }
@@ -86,7 +86,7 @@ namespace iPhoneTester
         public void AnySilverIphones16GB()
         {
             Lookup lookup = new Lookup();
-            var stores = lookup.PhoneAvailable(true, "16s");
+            var stores = lookup.PhoneAvailable(ModelCode.iPhone6Silver16GB);
             Assert.IsTrue(stores.Count > 0);
 
         }
@@ -95,7 +95,7 @@ namespace iPhoneTester
         public void AnySilverIphones64GB()
         {
             Lookup lookup = new Lookup();
-            var stores = lookup.PhoneAvailable(true, "64s");
+            var stores = lookup.PhoneAvailable(ModelCode.iPhone6Silver64GB);
             Assert.IsTrue(stores.Count > 0);
 
         }
@@ -104,7 +104,7 @@ namespace iPhoneTester
         public void AnySilverIphones128GB()
         {
             Lookup lookup = new Lookup();
-            var stores = lookup.PhoneAvailable(true, "128s");
+            var stores = lookup.PhoneAvailable(ModelCode.iPhone6Silver128GB);
             Assert.IsTrue(stores.Count > 0);
 
         }
@@ -114,7 +114,7 @@ namespace iPhoneTester
         public void AnyGoldIphones16GB()
         {
             Lookup lookup = new Lookup();
-            var stores = lookup.PhoneAvailable(true, "16g");
+            var stores = lookup.PhoneAvailable( ModelCode.iPhone6Gold16GB);
             Assert.IsTrue(stores.Count > 0);
         }
 
@@ -122,7 +122,7 @@ namespace iPhoneTester
         public void AnyGoldIphones64GB()
         {
             Lookup lookup = new Lookup();
-            var stores = lookup.PhoneAvailable(true, "64g");
+            var stores = lookup.PhoneAvailable(ModelCode.iPhone6Gold64GB);
             Assert.IsTrue(stores.Count > 0);
         }
 
@@ -130,7 +130,7 @@ namespace iPhoneTester
         public void AnyGoldIphones128GB()
         {
             Lookup lookup = new Lookup();
-            var stores = lookup.PhoneAvailable(true, "128g");
+            var stores = lookup.PhoneAvailable(ModelCode.iPhone6Gold128GB);
             Assert.IsTrue(stores.Count > 0);
         }
     }
