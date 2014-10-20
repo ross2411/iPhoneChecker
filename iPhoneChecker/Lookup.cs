@@ -30,6 +30,8 @@ namespace iPhoneChecker
     {
         private string _availabilityString { get; set; }
         private string _storesString { get; set; }
+        private Uri _storesLookupURL { get; set; }
+        private Uri _availabilityLookupURL { get; set; }
 
         public Lookup()
         {
@@ -43,15 +45,24 @@ namespace iPhoneChecker
             _storesString = StoresString;
         }
 
+        public Lookup(Uri StoresLookupURL, Uri AvailabilityLookupURL)
+        {
+            _storesLookupURL = StoresLookupURL;
+            _availabilityLookupURL = AvailabilityLookupURL;
+        }
 
+        /// <summary>
+        /// Find out if a particular model of iPhone 6 is in stock anywhere and returns the list of stores it's available in
+        /// </summary>
+        /// <param name="ModelCode">Model Code</param>
+        /// <returns>List of stores where iPhone is currently available</returns>
         public List<string> PhoneAvailable(ModelCode ModelCode) {
 
-            //Convert Model code to Model number using method below
-            //var modelNumber = this.GetModelNumber(ModelCode);
-
             //These are the web addresses.  Should really be parsing them in but hard coded for now
-            var storesURL = "https://reserve.cdn-apple.com/GB/en_GB/reserve/iPhone/stores.json";
-            var availabilityURL = "https://reserve.cdn-apple.com/GB/en_GB/reserve/iPhone/availability.json";
+            //var storesURL = "https://reserve.cdn-apple.com/GB/en_GB/reserve/iPhone/stores.json";
+            var storesURL = _storesLookupURL ? _storesLookupURL.AbsolutePath: "";
+            //var availabilityURL = "https://reserve.cdn-apple.com/GB/en_GB/reserve/iPhone/availability.json";
+            var availabilityURL = _availabilityLookupURL.AbsolutePath;
 
             WebClient wc = new WebClient();
 
@@ -59,7 +70,7 @@ namespace iPhoneChecker
             if (string.IsNullOrEmpty(_storesString)){
                 _storesString =wc.DownloadString(storesURL);
             }
-            StoreRootObject stores = JsonConvert.DeserializeObject<StoreRootObject>(_storesString);
+            Stores stores = JsonConvert.DeserializeObject<Stores>(_storesString);
             var storeDictionary = stores.stores.ToDictionary(m => m.storeNumber);
             
 

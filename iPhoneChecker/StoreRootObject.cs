@@ -21,7 +21,7 @@ namespace iPhoneChecker
         public bool? iPhone6_128_Gold {get;set;}
     }
 
-    public class StoreRootObject
+    public class Stores
     {
         public string updatedTime { get; set; }
         public List<Store> stores { get; set; }
