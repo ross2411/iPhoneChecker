@@ -51,30 +51,52 @@ namespace iPhoneChecker
             _availabilityLookupURL = AvailabilityLookupURL;
         }
 
+        private IDictionary<string, Store> getStoresDictionary()
+        {
+            WebClient wc = new WebClient();
+
+            if (string.IsNullOrEmpty(_storesString))
+            {
+                _storesString = wc.DownloadString(_storesLookupURL);
+            }
+
+            var stores = JsonConvert.DeserializeObject<dynamic>(_storesString);
+            if (((JObject)stores).Count == 0)
+                throw new InvalidOperationException("Unable to query stores Lookup URL");
+            else
+                return (((Stores)stores).stores.ToDictionary(m => m.storeNumber));
+            
+        }
+
+        private dynamic getAvailability()
+        {
+            WebClient wc = new WebClient();
+            //If I've passing the json string in use that otherwise use the URL
+            if (string.IsNullOrEmpty(_availabilityString))
+                _availabilityString = wc.DownloadString(_availabilityLookupURL);
+
+
+            var returnedString = JsonConvert.DeserializeObject<dynamic>(_availabilityString);
+            if (((JObject)returnedString).Count == 0)
+                throw new InvalidOperationException("Unable to query Availability URL");
+            else
+                return returnedString;
+
+        }
+
+
         /// <summary>
         /// Find out if a particular model of iPhone 6 is in stock anywhere and returns the list of stores it's available in
         /// </summary>
         /// <param name="ModelCode">Model Code</param>
         /// <returns>List of stores where iPhone is currently available</returns>
-        public List<string> PhoneAvailable(ModelCode ModelCode) {
+        public List<Store> PhoneAvailable(ModelCode ModelCode) {
 
-            WebClient wc = new WebClient();
 
-            //If I've passing the json string in use that otherwise use the URL
-            if (string.IsNullOrEmpty(_storesString)){
-                _storesString = wc.DownloadString(_storesLookupURL);
-            }
-            Stores stores = JsonConvert.DeserializeObject<Stores>(_storesString);
-            var storeDictionary = stores.stores.ToDictionary(m => m.storeNumber);
-            
+            var storeDictionary = getStoresDictionary();
+            var availabilityObject = getAvailability();
 
-            //If I've passing the json string in use that otherwise use the URL
-            if (string.IsNullOrEmpty(_availabilityString))
-                _availabilityString = wc.DownloadString(_availabilityLookupURL);
-
-      
-            var json = JsonConvert.DeserializeObject<dynamic>(_availabilityString);
-            foreach (var x in json)
+            foreach (var x in availabilityObject)
             {
                 string storeNumber = x.Name;
                 if (!string.Equals(storeNumber, "updated" )){
@@ -96,131 +118,59 @@ namespace iPhoneChecker
                 case iPhoneChecker.ModelCode.iPhone6Silver16GB:
                     return storeDictionary
                         .Where(m => m.Value.iPhone6_16_Silver.HasValue && m.Value.iPhone6_16_Silver.Value)
-                        .Select(m=>m.Key)
+                        .Select(m=>m.Value)
                         .ToList();
 
                 case iPhoneChecker.ModelCode.iPhone6Silver64GB:
                     return storeDictionary
                         .Where(m => m.Value.iPhone6_64_Silver.HasValue && m.Value.iPhone6_64_Silver.Value)
-                        .Select(m => m.Key)
+                        .Select(m => m.Value)
                         .ToList();
 
                 case iPhoneChecker.ModelCode.iPhone6Silver128GB:
                     return storeDictionary
                         .Where(m => m.Value.iPhone6_128_Silver.HasValue && m.Value.iPhone6_128_Silver.Value)
-                        .Select(m => m.Key)
+                        .Select(m => m.Value)
                         .ToList();
 
                 case iPhoneChecker.ModelCode.iPhone6Grey16GB:
                     return storeDictionary
                         .Where(m => m.Value.iPhone6_16_Grey.HasValue && m.Value.iPhone6_16_Grey.Value)
-                        .Select(m => m.Key)
+                        .Select(m => m.Value)
                         .ToList();
 
                 case iPhoneChecker.ModelCode.iPhone6Grey64GB:
                     return storeDictionary
                         .Where(m => m.Value.iPhone6_64_Grey.HasValue && m.Value.iPhone6_64_Grey.Value)
-                        .Select(m => m.Key)
+                        .Select(m => m.Value)
                         .ToList();
 
                 case iPhoneChecker.ModelCode.iPhone6Grey128GB:
                     return storeDictionary
                         .Where(m => m.Value.iPhone6_128_Grey.HasValue && m.Value.iPhone6_128_Grey.Value)
-                        .Select(m => m.Key)
+                        .Select(m => m.Value)
                         .ToList();
 
                 case iPhoneChecker.ModelCode.iPhone6Gold16GB:
                     return storeDictionary
                         .Where(m => m.Value.iPhone6_16_Gold.HasValue && m.Value.iPhone6_16_Gold.Value)
-                        .Select(m => m.Key)
+                        .Select(m => m.Value)
                         .ToList();
 
                 case iPhoneChecker.ModelCode.iPhone6Gold64GB:
                     return storeDictionary
                         .Where(m => m.Value.iPhone6_64_Gold.HasValue && m.Value.iPhone6_64_Gold.Value)
-                        .Select(m => m.Key)
+                        .Select(m => m.Value)
                         .ToList();
 
                 case iPhoneChecker.ModelCode.iPhone6Gold128GB:
                     return storeDictionary
                         .Where(m => m.Value.iPhone6_128_Gold.HasValue && m.Value.iPhone6_128_Gold.Value)
-                        .Select(m => m.Key)
+                        .Select(m => m.Value)
                         .ToList();
             }
 
             throw new InvalidOperationException("Model number couldn't be found");
-
-            //_availabilityString = _availabilityString.Replace('/', 'Z');
-            //_availabilityString = "{\"availability\" : [" + _availabilityString + "]}";
-            //var test = JsonConvert.DeserializeXNode(_availabilityString);
-            //var searchString = string.Format("<{0}>{1}</{0}>", modelNumber, Available.ToString().ToLower());
-            //var children = test.DescendantNodes()
-            //    .Where(m => m.ToString().Contains(searchString));
-            ////var children = test.DescendantNodes().Where(m => m.ToString().Contains("<MG4F2BZA>" + Available.ToString().ToLower() + "</MG4F2BZA>"));
-            //var childExEl = children.Cast<XElement>();
-            //var storeNumbers = childExEl.Select(m => m.Name);
-
-            //List<string> storesInStock = new List<string>();
-            //foreach (var s in storeNumbers)
-            //{
-               
-            //    if (storeDictionary.ContainsKey(s.LocalName))
-            //    storesInStock.Add(storeDictionary[s.LocalName].storeName);
-            //}
-
-            //return storesInStock;
-
-            //if (children.Count() > 0)
-            //    return true;
-            //return false;
-            //"MGAH2B/A"
-
-            //throw new NotImplementedException();
-
         }
-
-
-        //private Dictionary<string, string> ModelNumbers
-        //{
-        //    get
-        //    {
-        //        var mnDictionary = new Dictionary<string, string>();
-        //        mnDictionary.Add("16s", "MG482BZA");
-        //        mnDictionary.Add("64s", "MG4H2BZA");
-        //        mnDictionary.Add("128s", "MG4C2BZA");
-        //        mnDictionary.Add("16g", "MG492BZA");
-        //        mnDictionary.Add("64g", "MG4J2BZA");
-        //        mnDictionary.Add("128g", "MG4E2BZA");
-        //        mnDictionary.Add("16sg", "MG472BZA");
-        //        mnDictionary.Add("64sg", "MG4F2BZA");
-        //        mnDictionary.Add("128sg", "MG4A2BZA");
-
-        //        return mnDictionary;
-        //    }
-        //}
-
-        //private string GetModelNumber(string ModelCode)
-        //{
-        //    if (this.ModelNumbers.ContainsKey(ModelCode))
-        //        return this.ModelNumbers[ModelCode];
-        //    else
-        //        return null;
-        //}
-
-
-        /*
-         * 16s = MG482BZA,
-            64s = MG4H2BZA
-            128s = MG4C2BZA
-            16g = MG492BZA
-            64g = MG4J2BZA
-            128g = MG4E2BZA
-            16sg = MG472BZA
-            64sg = MG4F2BZA
-            128sg = MG4A2BZA
-         */
-
-
-
     }
 }

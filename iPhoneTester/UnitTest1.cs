@@ -48,14 +48,14 @@ namespace iPhoneTester
         public void AnyGreyIphones64GBInStockOracle()
         {
             var stores = iPhoneChecker.PhoneAvailable(ModelCode.iPhone6Grey64GB);
-            Assert.IsTrue( stores.Where(m=>m.ToLower().Contains("oracle")).Count() > 0);
+            Assert.IsTrue( stores.Where(m=>m.storeName.ToLower().Contains("oracle")).Count() > 0);
         }
 
         [TestMethod]
         public void AnyGreyIphones64GBInStockFestivalPlace()
         {
             var stores = iPhoneChecker.PhoneAvailable(ModelCode.iPhone6Grey64GB);
-            Assert.IsTrue(stores.Where(m => m.ToLower().Contains("festival")).Count() > 0);
+            Assert.IsTrue(stores.Where(m => m.storeName.ToLower().Contains("festival")).Count() > 0);
         }
 
         [TestMethod]
