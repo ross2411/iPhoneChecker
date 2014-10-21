@@ -70,11 +70,14 @@ namespace iPhoneChecker
                 _storesString = wc.DownloadString(_storesLookupURL);
             }
 
-            var stores = JsonConvert.DeserializeObject<dynamic>(_storesString);
-            if (((JObject)stores).Count == 0)
+            var storesDyn = JsonConvert.DeserializeObject<dynamic>(_storesString);
+            if (((JObject)storesDyn).Count == 0)
                 throw new InvalidOperationException("Unable to query stores Lookup URL");
             else
-                return (((Stores)stores).stores.ToDictionary(m => m.storeNumber));
+            {
+                var stores = JsonConvert.DeserializeObject<Stores>(_storesString);
+                return (stores.stores.ToDictionary(m => m.storeNumber));
+            }
             
         }
 
