@@ -10,19 +10,29 @@ using System.Xml.Linq;
 using System.Collections.Generic;
 using System.Linq;
 using Newtonsoft.Json.Linq;
+using System.ComponentModel.DataAnnotations;
 
 namespace iPhoneChecker
 {
     public enum ModelCode
     {
+        [Display(Name = "iPhone 6 - Grey - 16GB")]
         iPhone6Grey16GB,
+        [Display(Name = "iPhone 6 - Grey - 64GB")]
         iPhone6Grey64GB,
+        [Display(Name = "iPhone 6 - Grey - 128GB")]
         iPhone6Grey128GB,
+        [Display(Name = "iPhone 6 - Gold - 16GB")]
         iPhone6Gold16GB,
+        [Display(Name = "iPhone 6 - Gold - 64GB")]
         iPhone6Gold64GB,
+        [Display(Name = "iPhone 6 - Gold - 128GB")]
         iPhone6Gold128GB,
+        [Display(Name = "iPhone 6 - Silver - 16GB")]
         iPhone6Silver16GB,
+        [Display(Name = "iPhone 6 - Silver - 64GB")]
         iPhone6Silver64GB,
+        [Display(Name = "iPhone 6 - Silver - 128GB")]
         iPhone6Silver128GB,
     }
 

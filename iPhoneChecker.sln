@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "iPhoneChecker", "iPhoneChec
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "iPhoneTester", "iPhoneTester\iPhoneTester.csproj", "{4D775856-95E2-497C-B20C-356C33177791}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "iPhoneCheckerWeb", "iPhoneCheckerWeb\iPhoneCheckerWeb.csproj", "{20C9589E-9390-4ADA-8C06-85D8A7FEB054}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{4D775856-95E2-497C-B20C-356C33177791}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4D775856-95E2-497C-B20C-356C33177791}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4D775856-95E2-497C-B20C-356C33177791}.Release|Any CPU.Build.0 = Release|Any CPU
+		{20C9589E-9390-4ADA-8C06-85D8A7FEB054}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{20C9589E-9390-4ADA-8C06-85D8A7FEB054}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{20C9589E-9390-4ADA-8C06-85D8A7FEB054}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{20C9589E-9390-4ADA-8C06-85D8A7FEB054}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
